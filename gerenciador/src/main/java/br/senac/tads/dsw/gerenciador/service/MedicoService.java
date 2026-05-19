@@ -33,7 +33,8 @@ public class MedicoService {
 		var medico = new Medico(
 			novoMedico.getNome(),
 			novoMedico.getCrm(),
-			novoMedico.getEspecialidade()
+			novoMedico.getEspecialidade(),
+			novoMedico.getStatusEnum()
 		);
 		return repository.save(medico);
 	}
@@ -43,12 +44,19 @@ public class MedicoService {
 		novoMedico.setNome(medico.getNome());
 		novoMedico.setCrm(medico.getCrm());
 		novoMedico.setEspecialidade(medico.getEspecialidade());
+		novoMedico.setStatusEnum(medico.getStatusEnum());
 		return repository.save(novoMedico);
 	}
 
 	public void delete(long id){
 		findById(id);
 		repository.deleteById(id);
+
+	}
+
+	public String buscaTextual(String texto){
+		//to do implementar buscaTextual slide 11
+		return "";
 
 	}
 

@@ -1,5 +1,6 @@
 package br.senac.tads.dsw.gerenciador.model;
 
+import br.senac.tads.dsw.gerenciador.model.enuns.StatusEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -23,14 +24,25 @@ public class Medico {
 	@Column(name = "especialidade")
 	private String especialidade;
 
+	private StatusEnum statusEnum = StatusEnum.ATIVADO;
+
 
 	public Medico() {
 	}
 
-	public Medico(String nome, String crm, String especialidade) {
+	public Medico(String nome, String crm, String especialidade, StatusEnum statusEnum) {
 		this.nome = nome;
 		this.crm = crm;
 		this.especialidade = especialidade;
+		this.statusEnum = statusEnum;
+	}
+
+	public StatusEnum getStatusEnum() {
+		return statusEnum;
+	}
+
+	public void setStatusEnum(StatusEnum statusEnum) {
+		this.statusEnum = statusEnum;
 	}
 
 	public long getId() {
