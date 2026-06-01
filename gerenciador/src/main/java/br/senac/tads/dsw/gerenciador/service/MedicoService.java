@@ -35,6 +35,7 @@ public class MedicoService {
 			novoMedico.getCrm(),
 			novoMedico.getEspecialidade(),
 			novoMedico.getStatusEnum()
+
 		);
 		return repository.save(medico);
 	}
@@ -53,12 +54,4 @@ public class MedicoService {
 		repository.deleteById(id);
 
 	}
-
-	public String buscaTextual(String texto){
-		//to do implementar buscaTextual slide 11
-		return "";
-
-	}
-
-
 }

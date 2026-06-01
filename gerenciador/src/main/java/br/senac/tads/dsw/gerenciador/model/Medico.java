@@ -24,8 +24,9 @@ public class Medico {
 	@Column(name = "especialidade")
 	private String especialidade;
 
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private StatusEnum statusEnum = StatusEnum.ATIVADO;
-
 
 	public Medico() {
 	}

@@ -47,8 +47,4 @@ public class MedicoController {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-
-
-
-
 }
