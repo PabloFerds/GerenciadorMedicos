@@ -14,12 +14,14 @@
     <h1>Gerenciador de médicos</h1>
     <div id="alert-box" role="alert" aria-live="polite"></div>
 
-    <section id="lista-medicos" aria-label="Lista de médicos">
-      <p style="text-align:center; font-size:13px; color:#555; padding:12px 0;">Carregando...</p>
-    </section>
+    <div class="campo">
+      <input type="text" id="inp-filtro" placeholder="Filtrar por especialidade..." oninput="filtrar()" />
+    </div>
+
+    <section id="lista-medicos" aria-label="Lista de médicos"></section>
 
     <div class="btn-incluir-wrapper">
-      <button class="btn-incluir" onclick="abrirModalNovo()">Incluir novo médico</button>
+      <button class="btn-incluir" onclick="window.location.href='cadastro.html'">Incluir novo médico</button>
     </div>
   </div>
 
@@ -30,7 +32,7 @@
 
   <div class="modal-overlay" id="modal-form" role="dialog" aria-modal="true" aria-labelledby="modal-form-titulo">
     <div class="modal">
-      <h2 id="modal-form-titulo">Incluir médico</h2>
+      <h2 id="modal-form-titulo">Alterar médico</h2>
 
       <div class="campo">
         <label for="inp-nome">Nome completo</label>
@@ -39,12 +41,12 @@
 
       <div class="campo">
         <label for="inp-crm">CRM</label>
-        <input type="text" id="inp-crm" placeholder="Ex: 12345-SP" required/>
+        <input type="text" id="inp-crm" placeholder="Ex: 12345-SP" required />
       </div>
 
       <div class="campo">
         <label for="inp-especialidade">Especialidade</label>
-        <input type="text" id="inp-especialidade" placeholder="Pediatria" required/>
+        <input type="text" id="inp-especialidade" placeholder="Pediatria" required />
       </div>
 
       <div class="campo-check">
@@ -66,10 +68,11 @@
       <div class="modal-rodape">
         <button class="btn-cancelar" onclick="fecharModal('modal-confirmar')">Cancelar</button>
         <button class="btn-confirmar-excluir" id="btn-confirmar-del" onclick="confirmarExcluir()">Excluir</button>
-        </div>
       </div>
     </div>
+  </div>
 
   <script src="script.js"></script>
-  </body>
+</body>
+
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incluir Médico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="painel">
+    <h1>Incluir novo médico</h1>
+    <div id="alert-box" role="alert" aria-live="polite"></div>
+
+    <div class="form-pagina">
+      <div class="campo">
+        <label for="inp-nome">Nome completo</label>
+        <input type="text" id="inp-nome" placeholder="Ex: João Augusto" autocomplete="off" required />
+      </div>
+
+      <div class="campo">
+        <label for="inp-crm">CRM</label>
+        <input type="text" id="inp-crm" placeholder="Ex: 12345-SP" autocomplete="off" required />
+      </div>
+
+      <div class="campo">
+        <label for="inp-especialidade">Especialidade</label>
+        <input type="text" id="inp-especialidade" placeholder="Ex: Pediatria" autocomplete="off" required />
+      </div>
+
+      <div class="campo-check">
+        <input type="checkbox" id="inp-desativado" />
+        <label for="inp-desativado">Médico desativado</label>
+      </div>
+
+      <div class="form-pagina-rodape">
+        <button class="btn-cancelar" onclick="window.location.href='index.html'">Cancelar</button>
+        <button class="btn-salvar" id="btn-salvar" onclick="cadastrarMedico()">Salvar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    Pablo Eduardo de Sousa Fernandes / Weslley Lima Marques da Silva / 3BN / 2026<br>
+    Usou IA: Sim, chatGPT, utilizamos no front-end para seguir o padrão visual estabelecido pelo exercício
+  </footer>
+
+  <script src="cadastro.js"></script>
+</body>
+
+</html>

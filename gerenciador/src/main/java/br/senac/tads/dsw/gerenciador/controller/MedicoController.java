@@ -1,6 +1,6 @@
 package br.senac.tads.dsw.gerenciador.controller;
 
-
+import br.senac.tads.dsw.gerenciador.exceptions.CrmExistsException;
 import br.senac.tads.dsw.gerenciador.model.Medico;
 import br.senac.tads.dsw.gerenciador.service.MedicoService;
 import jakarta.validation.Valid;
@@ -21,20 +21,26 @@ public class MedicoController {
 		this.service = service;
 	}
 
-	@GetMapping()
-	public ResponseEntity<List<Medico>> findAll() {
-		return ResponseEntity.ok(service.findAll());
+	@GetMapping("/{id}")
+	public ResponseEntity<Medico> findById(@PathVariable long id) {
+		return ResponseEntity.ok(service.findById(id));
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Medico> findById(@PathVariable long id){
-		return  ResponseEntity.ok(service.findById(id));
-
+	@GetMapping
+	public List<Medico> findAll(@RequestParam(required = false) String especialidade) {
+		if (especialidade != null && !especialidade.isBlank()) {
+			return service.filtrar(especialidade);
+		}
+		return service.findAll();
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Medico> cadastrar(@RequestBody @Valid Medico medico) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrar(medico));
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid Medico medico) {
+		try {
+			return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrar(medico));
+		} catch (CrmExistsException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
 
 	@PutMapping("/{id}")

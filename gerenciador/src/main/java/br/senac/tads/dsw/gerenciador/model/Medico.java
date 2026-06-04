@@ -17,7 +17,7 @@ public class Medico {
 	private String nome;
 
 	@NotBlank
-	@Column(name = "crm")
+	@Column(name = "crm", unique = true)
 	private String crm;
 
 	@NotBlank
