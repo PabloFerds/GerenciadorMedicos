@@ -14,7 +14,7 @@ public class Medico {
 	private long id;
 
 	@NotBlank()
-	@Size(min = 5, message = "Minimo de 5 caracteres")
+	@Size(min = 5, message = "Nome com minimo de 5 caracteres")
 	@Column(name = "nome")
 	private String nome;
 
