@@ -6,6 +6,7 @@ import br.senac.tads.dsw.gerenciador.service.MedicoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,11 @@ public class MedicoController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<?> cadastrar(@RequestBody @Valid Medico medico) {
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid Medico medico, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			String mensagem = bindingResult.getFieldErrors().get(0).getDefaultMessage();
+			return ResponseEntity.badRequest().body(mensagem);
+		}
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrar(medico));
 		} catch (CrmExistsException e) {

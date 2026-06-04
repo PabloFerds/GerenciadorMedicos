@@ -3,6 +3,7 @@ package br.senac.tads.dsw.gerenciador.model;
 import br.senac.tads.dsw.gerenciador.model.enuns.StatusEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "medicos")
@@ -12,7 +13,8 @@ public class Medico {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@NotBlank
+	@NotBlank()
+	@Size(min = 5, message = "Minimo de 5 caracteres")
 	@Column(name = "nome")
 	private String nome;
 
